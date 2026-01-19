@@ -1,137 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>FIB-A-001 | Organized Crime Division</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background-color: #0d1b2a;
-            color: #e0e6ed;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encrypted Archive — Processing</title>
 
-        .header {
-            background-color: #081423;
-            padding: 18px;
-            border-bottom: 3px solid #2a9df4;
-        }
+<style>
+/* ===== GLOBAL ===== */
+body {
+  margin: 0;
+  background: #030405;
+  color: #d8dde3;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
 
-        .header h1 {
-            margin: 0;
-            font-size: 20px;
-        }
+.container {
+  max-width: 920px;
+  margin: auto;
+  padding: 100px 22px;
+  text-align: center;
+}
 
-        .header .sub {
-            font-size: 12px;
-            color: #9fb3c8;
-        }
+/* ===== NOISE OVERLAY ===== */
+body::after {
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.015) 0px,
+    rgba(0,0,0,0.22) 2px
+  );
+  opacity: 0.18;
+  pointer-events: none;
+}
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: #13293d;
-            border: 1px solid #1f3b5b;
-            padding: 30px;
-        }
+/* ===== STATUS ===== */
+.status {
+  display: inline-block;
+  border: 1px solid #2a2f36;
+  padding: 6px 14px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 26px;
+}
 
-        .classification {
-            display: inline-block;
-            background-color: #7a1f1f;
-            color: #fff;
-            padding: 6px 10px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+/* ===== TITLES ===== */
+.title {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
 
-        h2 {
-            margin-top: 0;
-            border-bottom: 2px solid #2a9df4;
-            padding-bottom: 6px;
-        }
+.subtitle {
+  font-size: 14px;
+  color: #8b9199;
+  margin-bottom: 38px;
+}
 
-        .meta {
-            font-size: 13px;
-            color: #9fb3c8;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
+/* ===== TERMINAL ===== */
+.terminal {
+  background: #06080b;
+  border: 1px solid #1c1f24;
+  width: 64%;
+  margin: 0 auto;
+  padding: 18px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  text-align: left;
+  white-space: pre;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  box-shadow: inset 0 0 32px rgba(0,0,0,0.9);
+  min-height: 180px;
+}
 
-        .section {
-            margin-bottom: 30px;
-        }
-
-        .redacted {
-            background-color: #000;
-            color: #000;
-            padding: 0 6px;
-        }
-
-        .terminal {
-            background-color: #05080d;
-            border: 1px solid #1f3b5b;
-            padding: 12px;
-            font-family: "Courier New", monospace;
-            font-size: 12px;
-            color: #6ef3a5;
-            margin-top: 30px;
-        }
-    </style>
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: 60px;
+  font-size: 13px;
+  color: #7a8088;
+  line-height: 1.5;
+}
+</style>
 </head>
-<body>
 
-<div class="header">
-    <h1>FIB-A-001</h1>
-    <div class="sub">Organized Crime Division</div>
-</div>
+<body>
 
 <div class="container">
 
-    <div class="classification">CONFIDENTIAL</div>
+  <div class="status">ARCHIVE SEALED</div>
 
-    <h2>Case Overview</h2>
-    <div class="meta">
-        Archive ID: FIB-A-001<br>
-        Division: Organized Crime<br>
-        Lead Office: Los Santos Field Office<br>
-        Last Updated: ██/██/2026<br>
-        Handling Agent: <span class="redacted">████████</span>
-    </div>
+  <div class="title">ENCRYPTED FIB FILE</div>
+  <div class="subtitle">Payload identified • Decryption unavailable • Passive analysis active</div>
 
-    <div class="section">
-        <h3>Summary</h3>
-        <p>
-            This archive contains intelligence, surveillance data, and investigative
-            reports related to organized criminal enterprises operating within
-            San Andreas. Subjects include trafficking, racketeering, and
-            money laundering activities linked to <span class="redacted">██████████</span>.
-        </p>
-    </div>
+  <div class="terminal" id="terminal"></div>
 
-    <div class="section">
-        <h3>Linked Files</h3>
-        <ul>
-            <li>Surveillance Reports</li>
-            <li>Financial Analysis</li>
-            <li>Wiretap Transcripts</li>
-            <li>Undercover Operations</li>
-            <li>Evidence Logs</li>
-        </ul>
-    </div>
-
-    <div class="terminal">
-        &gt; passive monitor enabled<br>
-        &gt; read operation logged<br>
-        &gt; source masked via 0bisian proxy
-    </div>
+  <div class="footer">
+    <div>This archive has been intercepted but remains encrypted.</div>
+    <div>Decryption depends on external variables.</div>
+    <div>No user interaction required.</div>
+  </div>
 
 </div>
 
-<!--
-    still watching.
-        — 0bisian
--->
+<script>
+const baseLines = [
+  "[SCAN] Container header validated",
+  "[INFO] Cipher suite detected:",
+  "       ▸ XN-448 / Obsidian-CTR",
+  "       ▸ Layered KDF (PBKDF-██)",
+  "[KEY] Primary fragment: 9f:c2:██:██:a1:██:e4",
+  "[MODE] Passive cryptanalysis enabled"
+];
+
+const loopLines = [
+  "[ANALYSIS] Entropy sampling in progress…",
+  "[CHECK] Testing keyspace window…",
+  "[WAIT] No exploitable weakness found",
+  "[SYNC] Monitoring upstream conditions…",
+  "[NOTE] Archive remains sealed"
+];
+
+const terminal = document.getElementById("terminal");
+let index = 0;
+
+/* Initial boot */
+function boot() {
+  if (index < baseLines.length) {
+    terminal.textContent += baseLines[index] + "\n";
+    terminal.scrollTop = terminal.scrollHeight;
+    index++;
+    setTimeout(boot, 300 + Math.random() * 200);
+  } else {
+    setTimeout(loop, 1200);
+  }
+}
+
+/* Endless passive loop */
+function loop() {
+  const line = loopLines[Math.floor(Math.random() * loopLines.length)];
+  terminal.textContent += line + "\n";
+  terminal.scrollTop = terminal.scrollHeight;
+
+  /* Trim old lines to keep it alive */
+  const lines = terminal.textContent.split("\n");
+  if (lines.length > 14) {
+    terminal.textContent = lines.slice(lines.length - 14).join("\n");
+  }
+
+  setTimeout(loop, 1800 + Math.random() * 2200);
+}
+
+boot();
+</script>
 
 </body>
 </html>
