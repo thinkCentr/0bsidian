@@ -1,160 +1,219 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Encrypted Archive — Processing</title>
+    <meta charset="UTF-8">
+    <title>FIB-A-388 | BCSO Leak</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #0d1b2a;
+            color: #e0e6ed;
+        }
 
-<style>
-/* ===== GLOBAL ===== */
-body {
-  margin: 0;
-  background: #030405;
-  color: #d8dde3;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  overflow-x: hidden;
-}
+        .header {
+            background-color: #081423;
+            padding: 18px;
+            border-bottom: 3px solid #2a9df4;
+        }
 
-.container {
-  max-width: 920px;
-  margin: auto;
-  padding: 100px 22px;
-  text-align: center;
-}
+        .header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
 
-/* ===== NOISE OVERLAY ===== */
-body::after {
-  content:"";
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(255,255,255,0.015) 0px,
-    rgba(0,0,0,0.22) 2px
-  );
-  opacity: 0.18;
-  pointer-events: none;
-}
+        .header .sub {
+            font-size: 12px;
+            color: #9fb3c8;
+        }
 
-/* ===== STATUS ===== */
-.status {
-  display: inline-block;
-  border: 1px solid #2a2f36;
-  padding: 6px 14px;
-  font-size: 12px;
-  letter-spacing: 1px;
-  margin-bottom: 26px;
-}
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #13293d;
+            border: 1px solid #1f3b5b;
+            padding: 30px;
+        }
 
-/* ===== TITLES ===== */
-.title {
-  font-size: 30px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-bottom: 14px;
-}
+        .classification {
+            display: inline-block;
+            background-color: #7a1f1f;
+            color: #fff;
+            padding: 6px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
 
-.subtitle {
-  font-size: 14px;
-  color: #8b9199;
-  margin-bottom: 38px;
-}
+        h2 {
+            margin-top: 0;
+            border-bottom: 2px solid #2a9df4;
+            padding-bottom: 6px;
+        }
 
-/* ===== TERMINAL ===== */
-.terminal {
-  background: #06080b;
-  border: 1px solid #1c1f24;
-  width: 64%;
-  margin: 0 auto;
-  padding: 18px;
-  font-size: 12.5px;
-  line-height: 1.55;
-  text-align: left;
-  white-space: pre;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  box-shadow: inset 0 0 32px rgba(0,0,0,0.9);
-  min-height: 180px;
-}
+        .meta {
+            font-size: 13px;
+            color: #9fb3c8;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
 
-/* ===== FOOTER ===== */
-.footer {
-  margin-top: 60px;
-  font-size: 13px;
-  color: #7a8088;
-  line-height: 1.5;
-}
-</style>
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .redacted {
+            background-color: #000;
+            color: #000;
+            padding: 0 6px;
+        }
+
+        .messages {
+            background-color: #101a28;
+            border-left: 3px solid #2a9df4;
+            padding: 12px;
+            margin: 12px 0;
+            font-family: "Courier New", monospace;
+            font-size: 13px;
+            color: #a5f3d1;
+            white-space: pre-wrap;
+        }
+
+        .terminal {
+            background-color: #05080d;
+            border: 1px solid #1f3b5b;
+            padding: 12px;
+            font-family: "Courier New", monospace;
+            font-size: 12px;
+            color: #6ef3a5;
+            margin-top: 30px;
+        }
+    </style>
 </head>
-
 <body>
+
+<div class="header">
+    <h1>FIB-4920-08</h1>
+    <div class="sub">Leaked Communications – BCSO</div>
+</div>
 
 <div class="container">
 
-  <div class="status">ARCHIVE SEALED</div>
+    <div class="classification">CONFIDENTIEL</div>
 
-  <div class="title">ENCRYPTED FIB FILE</div>
-  <div class="subtitle">Payload identified • Decryption unavailable • Passive analysis active</div>
+    <h2>Résumé</h2>
+    <div class="meta">
+        Archive ID: FIB-4920-08<br>
+        Sujet: Bureau du Shérif du Comté de Blaine (BCSO)<br>
+        Personne d’intérêt principale: Shérif Joseph « Joe » Malone<br>
+        Juridiction: Comté de Blaine<br>
+        Dernière mise à jour: ██/██/2026<br>
+        Agent responsable: <span class="redacted">████████</span>
+    </div>
 
-  <div class="terminal" id="terminal"></div>
+    <div class="section">
+        <p>
+            Ce dossier révèle des communications internes et rapports sur l’usage abusif
+            du pouvoir au BCSO. Le shérif Malone et certains adjoints semblent détourner
+            ressources et informations des saisies pour les vendre ou les redistribuer
+            à des groupes criminels, générant ainsi un profit et influençant les réseaux locaux.
+        </p>
+    </div>
 
-  <div class="footer">
-    <div>This archive has been intercepted but remains encrypted.</div>
-    <div>Decryption depends on external variables.</div>
-    <div>No user interaction required.</div>
-  </div>
+    <div class="section">
+    <h3>Communications interceptées</h3>
+
+    <p class="meta">
+        Origine : Appareil mobile — <span class="redacted">███-███-████</span><br>
+        Relais : iFruit Tower #8 — Sandy Shores<br>
+        Type : SMS chiffrés (partiellement récupérés)
+    </p>
+
+    <div class="messages">
+        [2026-██-██ 22:14:07]<br>
+        Device <span class="redacted">██████████</span> connecté à iFruit Tower #8 (Sandy Shores).<br>
+        Message extrait :<br>
+        “Check le dépôt de cette semaine. Les sacs doivent passer à
+        <span class="redacted">████████</span>. On récupère 15% avant redistribution.”
+    </div>
+
+    <div class="messages">
+        [2026-██-██ 23:02:41]<br>
+        Device <span class="redacted">██████████</span> connecté à iFruit Tower #8 (Sandy Shores).<br>
+        Message extrait :<br>
+        “Le type de Sandy Shores a un contact chez les Ballas. On a besoin
+        des infos sur son stock avant la vente. Pas de traces.”
+    </div>
+
+    <div class="messages">
+        [2026-██-██ 23:19:58]<br>
+        Device <span class="redacted">██████████</span> connecté à iFruit Tower #8 (Sandy Shores).<br>
+        Message extrait :<br>
+        “Toute saisie exceptionnelle = opportunité. Ignore les rapports
+        officiels. Tu gères le reste.”
+    </div>
+</div>
+
+<div class="section">
+    <h3>Note d’analyse — Télécommunications</h3>
+
+    <p class="meta">
+        Analyste : <span class="redacted">████████</span><br>
+        Unité : FIB – Cyber & Surveillance<br>
+        Méthode : Interception légale passive / récupération post‑incident
+    </p>
+
+    <p>
+        Les messages ci-dessus ont été récupérés à partir de métadonnées
+        cellulaires et de fragments de contenu stockés en cache réseau.
+        L’attribution directe à un individu précis ne peut être confirmée
+        avec certitude en l’absence d’un accès physique à l’appareil source.
+    </p>
+
+    <p>
+        Toutefois, les horaires, la localisation géographique et la récurrence
+        des communications correspondent aux déplacements connus de membres
+        du commandement du BCSO, dont le shérif Malone.
+    </p>
+</div>
+
+<div class="section">
+    <h3>Interception complémentaire</h3>
+
+    <p class="meta">
+        Origine : Appareil mobile — <span class="redacted">███-███-████</span><br>
+        Relais : iFruit Tower #14 — Nord de Los Santos<br>
+        Type : SMS chiffrés (fragment)
+    </p>
+
+    <div class="messages">
+        [2026-██-██ 01:37:12]<br>
+        Device <span class="redacted">██████████</span> connecté à iFruit Tower #14 (Los Santos).<br>
+        Message extrait :<br>
+        “Fais passer le lot par Blaine comme prévu. Ici ça attire trop
+        l’attention. Même règle que d’habitude.”
+    </div>
+</div>
+
+<p class="meta">
+    Note : Certaines communications associées à cet appareil ont été
+    supprimées avant récupération.
+</p>
+
+
+    <div class="terminal">
+        &gt; archive décryptée : PARTIELLE<br>
+        &gt; intégrité : COMPROMISE<br>
+        &gt; attribution confiance : MOYEN<br>
+        &gt; source masquée via proxy 0bisian
+    </div>
 
 </div>
 
-<script>
-const baseLines = [
-  "[SCAN] Container header validated",
-  "[INFO] Cipher suite detected:",
-  "       ▸ XN-448 / Obsidian-CTR",
-  "       ▸ Layered KDF (PBKDF-██)",
-  "[KEY] Primary fragment: 9f:c2:██:██:a1:██:e4",
-  "[MODE] Passive cryptanalysis enabled"
-];
-
-const loopLines = [
-  "[ANALYSIS] Entropy sampling in progress…",
-  "[CHECK] Testing keyspace window…",
-  "[WAIT] No exploitable weakness found",
-  "[SYNC] Monitoring upstream conditions…",
-  "[NOTE] Archive remains sealed"
-];
-
-const terminal = document.getElementById("terminal");
-let index = 0;
-
-/* Initial boot */
-function boot() {
-  if (index < baseLines.length) {
-    terminal.textContent += baseLines[index] + "\n";
-    terminal.scrollTop = terminal.scrollHeight;
-    index++;
-    setTimeout(boot, 300 + Math.random() * 200);
-  } else {
-    setTimeout(loop, 1200);
-  }
-}
-
-/* Endless passive loop */
-function loop() {
-  const line = loopLines[Math.floor(Math.random() * loopLines.length)];
-  terminal.textContent += line + "\n";
-  terminal.scrollTop = terminal.scrollHeight;
-
-  /* Trim old lines to keep it alive */
-  const lines = terminal.textContent.split("\n");
-  if (lines.length > 14) {
-    terminal.textContent = lines.slice(lines.length - 14).join("\n");
-  }
-
-  setTimeout(loop, 1800 + Math.random() * 2200);
-}
-
-boot();
-</script>
+<!--
+    tout le monde regarde, peu voient.
+        — 0bisian
+-->
 
 </body>
 </html>
